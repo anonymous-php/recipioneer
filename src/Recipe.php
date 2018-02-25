@@ -21,7 +21,10 @@ class Recipe implements RecipeInterface
 
     public function process(ResolverInterface $resolver)
     {
-        foreach ($this->ingredients as $ingredientName => $arguments) {
+        foreach ($this->ingredients as $ingredientData) {
+            $ingredientName = key($ingredientData);
+            $arguments = current($ingredientData);
+
             /** @var IngredientInterface $ingredient */
             $ingredient = $resolver->resolveIngredient($ingredientName, $arguments);
 
