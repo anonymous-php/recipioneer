@@ -11,7 +11,12 @@ class Recipe implements RecipeInterface
 
     public function __construct(array $arguments = [])
     {
-        $this->ingredients = $arguments;
+        $this->setIngredients($arguments);
+    }
+
+    public function setIngredients(array $ingredients)
+    {
+        $this->ingredients = $ingredients;
     }
 
     public function process(ResolverInterface $resolver)
